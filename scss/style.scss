@@ -1,0 +1,196 @@
+$Fuente:  'Fira Sans', sans-serif;
+$FuenteTitulo : 'Fjalla One', sans-serif;
+
+body{
+    font-family: $Fuente;
+}
+a{
+    color: black;
+    text-decoration: none;
+    outline: none;
+}
+a:hover{
+    color: black;
+    text-decoration: none;
+    
+}
+
+select{
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.623);
+    border-radius: 10px;
+    outline:none;
+}
+
+label{
+    font-weight: bold;
+    
+}
+
+button{
+    outline: none;
+    line-height: normal;
+}
+
+.bg-contenedor{
+    border: 1px solid;
+    border-color: rgb(87, 84, 84);
+    border-radius: 20px;
+    opacity: 0.7;
+}
+
+.bg-contenedor:hover{
+    
+    opacity: 1;
+    transition: 1s;
+
+}
+
+
+.tipos__titulo{
+    font-family: $Fuente;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.tipos__valor{
+    font-family:  $FuenteTitulo;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.bg-contenedor-elegido{
+
+    background-color: #5499C7 ;
+    border: 1px solid;
+    border-color: rgb(20, 20, 20);
+    border-radius: 20px;
+    font-weight: bold;
+
+}
+
+.bg-contenedor-elegido:hover{
+    background-color:white;
+    border: 1px solid;
+    border-color: black;
+    font-weight: bold;
+    transition: 1s;
+}
+
+.bg-opcion{
+    font-size: 0.9rem;
+    background-color: #5499C7 ;
+    font-weight: bold;
+    color: black;
+    display: inline-flex;
+    border-radius: 40px;
+    box-shadow: -4px 3px 7px 3px rgba(21,21,21,0.23);
+}
+
+.grafico{
+    position: relative;
+    height: 60vh;
+    width: 60vw;
+}
+.btn{
+    font-weight: bold;
+    border-radius: 40px;
+}
+
+.botonGeneral{
+    background-color: rgb(12, 12, 68);
+    border-color: rgb(12, 12, 68);
+    color: white;
+    
+    
+}
+.botonGeneral:hover{
+    background-color: rgb(22, 22, 119);
+    color: white;
+}
+
+.botonGeneral:disabled{
+    background-color: rgb(81, 81, 83);
+}
+
+.btn:active{
+    outline: none;
+}
+
+
+.botonBorrar{
+    align-items: center;
+    background-image: url('../icon/001-eliminar.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(184, 3, 3);
+    height: 25px;
+    width: 25px;
+    
+}
+
+.botonHome{
+    align-items: center;
+    background-image: url('../icon/boton-home.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(12, 12, 68);
+    border-color: rgb(12, 12, 68);
+    height: 40px;
+    width: 40px;
+
+}
+
+.iconosEmpresas{
+    box-shadow: -4px 3px 7px 3px rgba(21,21,21,0.23);
+    border-radius: 10px;
+    transform: scale(1.1);
+    transition: 1.5s;
+}
+.bg-gris{
+    background-color: rgba(159, 159, 163, 0.315);
+}
+
+.bg-fondo{
+    background-color:  rgb(12, 12, 68);
+    
+}
+#encabezado{
+    font-size: 0.9rem;
+}
+#importe{
+    color: black;
+    font-family: $FuenteTitulo;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.consumoTotal{
+    color: rgb(12, 12, 68);
+    font-family: $FuenteTitulo;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.letraTitulo{
+    font-family: 'Fjalla One', sans-serif;
+}
+.fuenteTitulo{
+    font-size: 1rem;
+}
+.logoElectro{
+    height: 60px;
+}
+.iconos{
+    height: 60px;
+}
+@media screen and (max-width: 776px){
+    .logoElectro{
+        height: 60px;
+    }
+    .fuenteTitulo{
+        font-size: .88rem;
+    }
+    .iconos{
+        height: 50px;
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "empresas": [
+        {
+            "nombre": "Eden",
+            "icon" : "https://www.edensa.com.ar/wp-content/themes/eden/img/logo.png",
+            "tarifa": 4.239,
+            "cargoFijo": 102.5,
+            "idCiudad" : "3430708"
+        },
+        {
+            "nombre": "Edenor",
+            "icon" : "https://upload.wikimedia.org/wikipedia/commons/5/5a/EDENOR_isologo.png",
+            "tarifa": 2.845,
+            "cargoFijo": 41.75,
+            "idCiudad" : "3435910"
+        },
+        {
+            "nombre": "Edesur",
+            "icon" : "https://www.edesur.com.ar/wordpress/wp-content/uploads/2018/10/Edesur_Logo.png",
+            "tarifa": 2.832,
+            "cargoFijo": 43.46,
+            "idCiudad" : "3435910"
+        },
+        {
+            "nombre": "Epec",
+            "icon" : "https://www.epec.com.ar/assets/template/images/navbar-logo.png",
+            "tarifa": 5.356,
+            "cargoFijo": 112.68,
+            "idCiudad" : "3860259"
+        },
+        {
+            "nombre": "Enersa",
+            "icon" : "https://www.enersa.com.ar/wp-content/uploads/2019/05/logo-enersa.jpg",
+            "tarifa": 4.436,
+            "cargoFijo": 245.12,
+            "idCiudad" : "3841956"
+        },
+        {
+            "nombre": "Edelap",
+            "icon" :"https://desasa.com.ar/assets/uploads/home/logos/operativa__logo--edelap.png",
+            "tarifa": 3.208,
+            "cargoFijo": 85.75,
+            "idCiudad" : "3432043"
+        }
+    
+    ]
+}

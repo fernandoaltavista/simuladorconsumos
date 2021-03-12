@@ -1,0 +1,158 @@
+body {
+  font-family: "Fira Sans", sans-serif; }
+
+a {
+  color: black;
+  text-decoration: none;
+  outline: none; }
+
+a:hover {
+  color: black;
+  text-decoration: none; }
+
+select {
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.623);
+  border-radius: 10px;
+  outline: none; }
+
+label {
+  font-weight: bold; }
+
+button {
+  outline: none;
+  line-height: normal; }
+
+.bg-contenedor {
+  border: 1px solid;
+  border-color: #575454;
+  border-radius: 20px;
+  opacity: 0.7; }
+
+.bg-contenedor:hover {
+  opacity: 1;
+  transition: 1s; }
+
+.tipos__titulo {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold; }
+
+.tipos__valor {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 1rem;
+  font-weight: bold; }
+
+.bg-contenedor-elegido {
+  background-color: #5499C7;
+  border: 1px solid;
+  border-color: #141414;
+  border-radius: 20px;
+  font-weight: bold; }
+
+.bg-contenedor-elegido:hover {
+  background-color: white;
+  border: 1px solid;
+  border-color: black;
+  font-weight: bold;
+  transition: 1s; }
+
+.bg-opcion {
+  font-size: 0.9rem;
+  background-color: #5499C7;
+  font-weight: bold;
+  color: black;
+  display: inline-flex;
+  border-radius: 40px;
+  box-shadow: -4px 3px 7px 3px rgba(21, 21, 21, 0.23); }
+
+.grafico {
+  position: relative;
+  height: 60vh;
+  width: 60vw; }
+
+.btn {
+  font-weight: bold;
+  border-radius: 40px; }
+
+.botonGeneral {
+  background-color: #0c0c44;
+  border-color: #0c0c44;
+  color: white; }
+
+.botonGeneral:hover {
+  background-color: #161677;
+  color: white; }
+
+.botonGeneral:disabled {
+  background-color: #515153; }
+
+.btn:active {
+  outline: none; }
+
+.botonBorrar {
+  align-items: center;
+  background-image: url("../icon/001-eliminar.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #b80303;
+  height: 25px;
+  width: 25px; }
+
+.botonHome {
+  align-items: center;
+  background-image: url("../icon/boton-home.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #0c0c44;
+  border-color: #0c0c44;
+  height: 40px;
+  width: 40px; }
+
+.iconosEmpresas {
+  box-shadow: -4px 3px 7px 3px rgba(21, 21, 21, 0.23);
+  border-radius: 10px;
+  transform: scale(1.1);
+  transition: 1.5s; }
+
+.bg-gris {
+  background-color: rgba(159, 159, 163, 0.315); }
+
+.bg-fondo {
+  background-color: #0c0c44; }
+
+#encabezado {
+  font-size: 0.9rem; }
+
+#importe {
+  color: black;
+  font-family: "Fjalla One", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold; }
+
+.consumoTotal {
+  color: #0c0c44;
+  font-family: "Fjalla One", sans-serif;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 10px; }
+
+.letraTitulo {
+  font-family: 'Fjalla One', sans-serif; }
+
+.fuenteTitulo {
+  font-size: 1rem; }
+
+.logoElectro {
+  height: 60px; }
+
+.iconos {
+  height: 60px; }
+
+@media screen and (max-width: 776px) {
+  .logoElectro {
+    height: 60px; }
+  .fuenteTitulo {
+    font-size: .88rem; }
+  .iconos {
+    height: 50px; } }
