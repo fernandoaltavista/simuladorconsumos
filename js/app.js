@@ -187,7 +187,7 @@ function borrarElegidos(idBorrar,indiceBorrar) {
     arrayElectroElegidos[indiceBorrar] = 0              //Coloca un 0 en el elemento eliminado
     
 }
-//Funcion que borra un elemento con efecto
+
 function borraElemento(id) { 
     $(id).fadeOut(()=>{$(id).remove()})
 }
@@ -198,7 +198,7 @@ function incializa(){
         element.totalTipo = 0 
     });
 }
-//Funcion que valida que el usuario ingrese la opcion
+
 function validaOpciones(param1,param2,param3) {
     
     if ( (param1.val() == "seleccione") ) {
