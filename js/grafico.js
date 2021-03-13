@@ -9,59 +9,43 @@ function mayusculaTipos() {
     return mayuscula
 }
 
-
 //Funcion que crea el grafico con ChartJs, con su nodo
 function creaGrafico() {  
-
-var ctx = document.getElementById("myChart").getContext('2d')
-
-Chart.defaults.global.defaultFontSize = 11;
-Chart.defaults.global.defaultFontFamily = 'Helvetica';
-Chart.defaults.global.defaultFontColor = 'black';
 
 
 creaArrayTotales()
 
-var myChart = new Chart(ctx, {
+var options = {
+    series: arrayTotales,
+    chart: {
+    width: '100%',
     type: 'pie',
-    data: {
-        labels: mayusculaTipos(),
-        datasets: [{
-            label: '# of Votes',
-            data: arrayTotales,
-            backgroundColor: [
-                
-                '#D4E6F1',
-                '#A9CCE3 ',
-                '#7FB3D5',
-                '#5499C7',
-                '#2980B9',
-                '#1F618D',
-                '#1A5276', 
-                '#154360'
-            ],
-
-            borderWidth: 2
-
-        }]
-    },
-    options: {
-        responsive : true,
-        maintainAspectRatio: false,
-        legend :{
-            position : 'right',
-            align : 'center',
-            
-            
-        },
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                },
-                display:false
-            }]
-        }
+  },
+  labels: mayusculaTipos(),
+  theme: {
+    monochrome: {
+      enabled: true
     }
-});
+  },
+  plotOptions: {
+    pie: {
+      dataLabels: {
+        offset: -5
+      }
+    }
+  },
+  dataLabels: {
+    formatter(val, opts) {
+      const name = opts.w.globals.labels[opts.seriesIndex]
+      return [name, val.toFixed(1) + '%']
+    }
+  },
+  legend: {
+    show: true,
+    position: 'bottom'
+  }
+  };
+
+  var chart = new ApexCharts(document.querySelector("#chart"), options);
+  chart.render();
 }

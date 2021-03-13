@@ -46,7 +46,6 @@ button{
 
 }
 
-
 .tipos__titulo{
     font-family: $Fuente;
     font-size: 1.1rem;
@@ -87,11 +86,7 @@ button{
     box-shadow: -4px 3px 7px 3px rgba(21,21,21,0.23);
 }
 
-.grafico{
-    position: relative;
-    height: 60vh;
-    width: 60vw;
-}
+
 .btn{
     font-weight: bold;
     border-radius: 40px;
@@ -185,7 +180,7 @@ button{
 }
 @media screen and (max-width: 776px){
     .logoElectro{
-        height: 60px;
+        height: 50px;
     }
     .fuenteTitulo{
         font-size: .88rem;

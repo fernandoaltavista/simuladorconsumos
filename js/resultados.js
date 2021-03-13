@@ -29,7 +29,7 @@ let icon = listado[indice].icon
 
 $("#iconosEmpresas").after($("<div id='calculo' class='text-center d-block p-3'></div>"));
 
-return $("#calculo").append(`<img src=`+icon+` height="180px" class="py-3"></img>
+return $("#calculo").append(`<img src=`+icon+` height="150px" class="py-3"></img>
                         <h3 class='d-block py-2 consumoTotal'>IMPORTE MENSUAL ESTIMADO (sin Impuestos): $`+sumaEnPesos.toFixed(2)+`</h3>
                         `)
 }
@@ -44,7 +44,6 @@ function cargaTarifas() {
       
     })
     .done((listado)=> {
-        $.notify("Llamado AJAX exitoso","success")
         cargarIconosEmpresa(listado.empresas)
         $("body").on('click', '#iconosEmpresas img', function() {
             let opcion = ($(this).attr('id'))
@@ -58,7 +57,7 @@ function cargaTarifas() {
     })
     .fail(()=> {
         borraElemento("#importe")
-        $.notify("Error en llamado AJAX ","error")
+        $.notify("Error ","error")
     })
  
 }
@@ -94,7 +93,7 @@ function alertaTormentas(codClima,clima) {
 function alertaAltasTemperaturas(codClima,temp,clima) {
     if (temp > 30){
         Swal.fire({
-            title: 'En '+ clima.name + ' hace '+ temp +'º tené presente este consejo.',
+            title: `En ${clima.name} hace ${temp}º tené presente este consejo.`,
             text: 'Regulá los aparatos de aire acondicionado en 24° cuando haga calor. Por cada grado inferior a esa temperatura, el consumo aumenta entre un 5% y 7%.',
             imageUrl: 'http://openweathermap.org/img/wn/'+codClima.icon+'.png',
             imageWidth: 60,
@@ -121,7 +120,7 @@ function alertasClimaticas(indice,listado){
         })
         .fail(()=> {
             
-            $.notify("Error en llamado AJAX ","error")
+            $.notify("Error.El servidor no responde ","error")
         })
 
 }
@@ -135,9 +134,9 @@ function imprimirTotal(){
         borraElemento("#botonResultado")
 
         $("#total-general").after($(    `<div class="container-fluid">
-        <div class="row align-items-center">
+        <div class="row justify-content-center">
             <div class="col-md-6 text-center grafico" id="resultado">
-                <canvas id="myChart"></canvas>
+                <div id="chart"></div>
                 
             </div> 
             <div class="col-md-6 d-block" >
@@ -145,7 +144,7 @@ function imprimirTotal(){
                 <label id="importe" class="form-label d-block mt-5 border-top" >Seleccione la empresa para calcular su factura</label>
                 
             </div> 
-            <div class="col-12 py-3"  style="position:fixed; bottom:0; right:0;" >
+            <div class="col-12 py-3"  style="position:absolute; bottom:0; right:0;" >
                 <input type="button" id="reiniciar" class= "btn btn-primary botonHome" value="" onclick="location.reload()"></input>
             </div> 
         </div>  
