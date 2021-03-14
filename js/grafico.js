@@ -42,7 +42,9 @@ var options = {
   },
   legend: {
     show: true,
-    position: 'bottom'
+    position: 'bottom',
+    horizontalAlign: 'center',
+    fontSize: '9px'
   }
   };
 
