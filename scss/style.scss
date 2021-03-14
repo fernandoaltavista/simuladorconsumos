@@ -32,6 +32,11 @@ button{
     line-height: normal;
 }
 
+
+.menu{
+    @extend .letraTitulo;
+    @extend .fuenteTitulo;
+}
 .bg-contenedor{
     border: 1px solid;
     border-color: rgb(87, 84, 84);
@@ -150,14 +155,15 @@ button{
     background-color:  rgb(12, 12, 68);
     
 }
-#encabezado{
-    font-size: 0.9rem;
+.encabezado{
+   @extend .fuenteNormal
 }
+
 #importe{
     color: black;
     font-family: $FuenteTitulo;
-    font-size: 1.2rem;
     font-weight: bold;
+    @extend .fuenteNormal
 }
 .consumoTotal{
     color: rgb(12, 12, 68);
@@ -172,18 +178,26 @@ button{
 .fuenteTitulo{
     font-size: 1rem;
 }
+.fuenteNormal{
+    font-size: 0.9rem;
+}
 .logoElectro{
     height: 60px;
 }
 .iconos{
     height: 60px;
 }
+
+
 @media screen and (max-width: 776px){
     .logoElectro{
-        height: 50px;
+        height: 40px;
     }
     .fuenteTitulo{
         font-size: .88rem;
+    }
+    .fuenteNormal{
+        font-size: 0.8rem;
     }
     .iconos{
         height: 50px;

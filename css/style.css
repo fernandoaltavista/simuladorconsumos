@@ -116,13 +116,9 @@ button {
 .bg-fondo {
   background-color: #0c0c44; }
 
-#encabezado {
-  font-size: 0.9rem; }
-
 #importe {
   color: black;
   font-family: "Fjalla One", sans-serif;
-  font-size: 1.2rem;
   font-weight: bold; }
 
 .consumoTotal {
@@ -132,11 +128,14 @@ button {
   border: 2px solid black;
   border-radius: 10px; }
 
-.letraTitulo {
+.letraTitulo, .menu {
   font-family: 'Fjalla One', sans-serif; }
 
-.fuenteTitulo {
+.fuenteTitulo, .menu {
   font-size: 1rem; }
+
+.fuenteNormal, .encabezado, #importe {
+  font-size: 0.9rem; }
 
 .logoElectro {
   height: 60px; }
@@ -146,8 +145,10 @@ button {
 
 @media screen and (max-width: 776px) {
   .logoElectro {
-    height: 50px; }
-  .fuenteTitulo {
+    height: 40px; }
+  .fuenteTitulo, .menu {
     font-size: .88rem; }
+  .fuenteNormal, .encabezado, #importe {
+    font-size: 0.8rem; }
   .iconos {
     height: 50px; } }
