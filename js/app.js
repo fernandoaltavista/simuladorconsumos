@@ -13,6 +13,7 @@ function eventos(){
        
         $(element.idAgregar).click( (e)=> {         //Activa los eventos de agregar electrodomesticos
             imprimirOpcion(element.idTipo)
+            scrollBoton()
         });
 
         resetModal(element.idModal)                 //Resetea selects si clickea boton de Cerrar del Modal
@@ -55,7 +56,7 @@ function imprimirOpcion(tipo) {
         
         
     }
-    
+  
 }
 
 function creaListadoOpciones(tipo,electro,indice) {
@@ -72,7 +73,7 @@ function creaListadoOpciones(tipo,electro,indice) {
             actualizaTotales()                             
             renderizaTablero()
         });    
-
+        
 }
 
 //Funcion que actualiza todo el array de electrdomesticos elegidos (AB)
@@ -189,7 +190,7 @@ function borrarElegidos(idBorrar,indiceBorrar) {
 }
 
 function borraElemento(id) { 
-    $(id).fadeOut(()=>{$(id).remove()})
+    $(id).fadeOut(800,()=>{$(id).remove()})
 }
 
 //Funcion que inicializa en 0 todos los totales portipo
@@ -199,6 +200,11 @@ function incializa(){
     });
 }
 
+function scrollBoton() {
+    $('html,body').animate({
+        scrollTop: $("#botonResultado").offset().top
+    }, 4000);
+}
 function validaOpciones(param1,param2,param3) {
     
     if ( (param1.val() == "seleccione") ) {
@@ -251,8 +257,8 @@ function sumaLocalStorage(){
         $.notify("Bienvenido a su primer calculo","success")
         
     } else {
-        $.notify("Este es su ultimo consumo calculado: " + localStorage.getItem('total')+" KWH","info")
-      
-
+        $.notify("Su ultimo consumo: " + localStorage.getItem('total')+" KWH","info")
+        
     }
+
 }
