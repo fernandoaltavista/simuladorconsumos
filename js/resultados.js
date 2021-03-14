@@ -10,11 +10,11 @@ function cargarIconosEmpresa(listado){
             $('#'+element.nombre).css('cursor', 'pointer');
 
             $('#'+element.nombre).hover(function () {
-                    // over
+                   
                     $('#'+element.nombre).addClass('iconosEmpresas');
                 }, function () {
                     $('#'+element.nombre).removeClass('iconosEmpresas');
-                    // out
+                
                 }
             );
     });
@@ -24,15 +24,18 @@ function cargarIconosEmpresa(listado){
 
 
 function calculoEnPesos(indice,listado) {
-let sumaEnPesos = listado[indice].cargoFijo + listado[indice].tarifa * totalConsumo
+let sumaEnPesos = listado[indice].cargoFijo + (listado[indice].tarifa * totalConsumo)
+let impuesto = sumaEnPesos * listado[indice].impuesto
+let sumaTotalPesos = sumaEnPesos + impuesto
 let icon = listado[indice].icon
-
+const advertencia = "https://www.nicepng.com/png/detail/348-3484341_signos-de-interrogacin-signo-de-pregunta-fondo-azul.png"
 $("#iconosEmpresas").after($("<div id='calculo' class='text-center d-block p-3'></div>"));
 
-return $("#calculo").append(`<img src=`+icon+` height="150px" class="py-3"></img>
-                        <h3 class='d-block py-2 consumoTotal'>IMPORTE MENSUAL ESTIMADO (sin Impuestos): $`+sumaEnPesos.toFixed(2)+`</h3>
-                        `)
-}
+$("#calculo").append(`<h3 class='d-block py-2 consumoTotal'>IMPORTE MENSUAL ESTIMADO: $`+sumaTotalPesos.toFixed(2)+`<img src=`+advertencia+` height="20px" id="signo" class="ml-2"></img></h3>
+                            <img src=`+icon+` height="100px" class="py-2"></img>
+                        `).fadeIn(1000);
+tippy("#signo",{content: 'No estan incluidos los impuestos municipales ni alumbrado publico.Valores correspondiente a tarifa T1R'}
+)}
 
 
 function cargaTarifas() {
@@ -91,9 +94,9 @@ function alertaTormentas(codClima,clima) {
 }
 
 function alertaAltasTemperaturas(codClima,temp,clima) {
-    if (temp > 30){
+    if (temp.toFixed() > 30){
         Swal.fire({
-            title: `En ${clima.name} hace ${temp}º tené presente este consejo.`,
+            title: `En ${clima.name} hace ${temp.toFixed()}º tené presente este consejo.`,
             text: 'Regulá los aparatos de aire acondicionado en 24° cuando haga calor. Por cada grado inferior a esa temperatura, el consumo aumenta entre un 5% y 7%.',
             imageUrl: 'http://openweathermap.org/img/wn/'+codClima.icon+'.png',
             imageWidth: 60,
@@ -129,22 +132,23 @@ function alertasClimaticas(indice,listado){
 function imprimirTotal(){
 
     $("#botonResultado").click(()=> { 
-
-        $("#tablero").slideUp(400,()=>{$("#tablero").remove()})
+    // $('html,body').animate({scrollTop: $("body").offset().top});
+        $("#tablero").slideUp(1000,()=>{$("#tablero").remove()})
         borraElemento("#botonResultado")
+        
 
         $("#total-general").after($(    `<div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-md-6 text-center grafico" id="resultado">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6 d-block" >
+                <h2 id="totalGeneral" class="consumoTotal py-2 mb-2 text-center">CONSUMO TOTAL MENSUAL  `+ sumaTotal() + ` KWH</h2>
+                <label id="importe" class="form-label d-block border-top" >Seleccione la empresa para calcular su factura</label>
+            </div> 
+            <div class="col-md-6 border grafico" id="resultado">
                 <div id="chart"></div>
                 
             </div> 
-            <div class="col-md-6 d-block" >
-                <h2 id="totalGeneral" class="consumoTotal py-2 mb-2 text-center">CONSUMO TOTAL MENSUAL  `+ sumaTotal() + ` KWH</h2>
-                <label id="importe" class="form-label d-block mt-5 border-top" >Seleccione la empresa para calcular su factura</label>
-                
-            </div> 
-            <div class="col-12 py-3"  style="position:absolute; bottom:0; right:0;" >
+            
+            <div class="col-12 py-1"  style="bottom:0 right:0;" >
                 <input type="button" id="reiniciar" class= "btn btn-primary botonHome" value="" onclick="location.reload()"></input>
             </div> 
         </div>  
@@ -154,4 +158,5 @@ function imprimirTotal(){
         creaGrafico()
         cargaTarifas()
     })
+    
 }
