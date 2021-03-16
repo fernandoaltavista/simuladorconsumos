@@ -8,7 +8,7 @@ function cargaArrayEventos() {
 
 //Eventos Click de cada Modal que agrega un electrodomestico.Obtiene los id desde el arrayID.(con objetos de las direcciones en el DOM)
 function eventos(){
-    
+
     arrayID.forEach(element => {
        
         $(element.idAgregar).click( (e)=> {         //Activa los eventos de agregar electrodomesticos
@@ -132,7 +132,8 @@ function newElegido(tipo,id,nombre,idBoton,indice) {
  
     $("#"+id).addClass("p-2 m-2 bg-opcion")
     $("#"+id).append('<input type= "button" class="ml-2 btn btn-danger d-block botonBorrar" id="'+ idBoton+'" value=""></input>') 
-    tippy('#'+id,{
+    $('#'+id +'> p').css('cursor', 'pointer')
+    tippy('#'+id +'> p' ,{
         content :   `Consumo: ${arrayElectroElegidos[indice].consumo} watts,
                     Cantidad: ${arrayElectroElegidos[indice].cantidad} ,
                     Uso Diario: ${arrayElectroElegidos[indice].horas} horas`,  
@@ -140,7 +141,7 @@ function newElegido(tipo,id,nombre,idBoton,indice) {
 }  
 
 
-//Funcion que muestra los totales por tipo en HTML
+
 function mostrarTotalesPorTipo(id,mensaje) {
     $("#total-"+id).text(mensaje)
 }
@@ -202,8 +203,7 @@ function incializa(){
 
 function scrollBoton() {
     $('html,body').animate({
-        scrollTop: $("#botonResultado").offset().top
-    }, 4000);
+        scrollTop: $("#botonResultado").offset().top});
 }
 function validaOpciones(param1,param2,param3) {
     
@@ -251,7 +251,7 @@ function limpiaArrayElectroElegidos(){
 
 //Incializa en localStorage la suma anterior , y sino te da la bievenida.
 function sumaLocalStorage(){
-
+    $("html, body").animate({ scrollTop: 0 });
     if ( ((localStorage.getItem('total')) == 0) || ((localStorage.getItem('total')) == null)  )  {  //Coloque 0 o null por algun navegador
         localStorage.setItem('total',totalConsumo)
         $.notify("Bienvenido a su primer calculo","success")

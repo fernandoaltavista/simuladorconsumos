@@ -24,16 +24,19 @@ function cargarIconosEmpresa(listado){
 
 
 function calculoEnPesos(indice,listado) {
+
 let sumaEnPesos = listado[indice].cargoFijo + (listado[indice].tarifa * totalConsumo)
 let impuesto = sumaEnPesos * listado[indice].impuesto
 let sumaTotalPesos = sumaEnPesos + impuesto
 let icon = listado[indice].icon
-const advertencia = "https://www.nicepng.com/png/detail/348-3484341_signos-de-interrogacin-signo-de-pregunta-fondo-azul.png"
+const ADVERTENCIA = "https://www.nicepng.com/png/detail/348-3484341_signos-de-interrogacin-signo-de-pregunta-fondo-azul.png"
 $("#iconosEmpresas").after($("<div id='calculo' class='text-center d-block p-3'></div>"));
 
-$("#calculo").append(`<h3 class='d-block py-2 consumoTotal'>IMPORTE MENSUAL ESTIMADO: $`+sumaTotalPesos.toFixed(2)+`<img src=`+advertencia+` height="20px" id="signo" class="ml-2"></img></h3>
+$("#calculo").append(`<h3 class='d-block py-2 consumoTotal'>IMPORTE MENSUAL ESTIMADO: $`+sumaTotalPesos.toFixed(2)+`<img src=`+ADVERTENCIA+` height="20px" id="signo" class="ml-2"></img></h3>
                             <img src=`+icon+` height="100px" class="py-2"></img>
                         `).fadeIn(1000);
+
+$('#signo').css('cursor', 'pointer');
 tippy("#signo",{content: 'No estan incluidos los impuestos municipales ni alumbrado publico.Valores correspondiente a tarifa T1R'}
 )}
 
@@ -70,7 +73,7 @@ function alertaLluvias(codClima,clima) {
     if ((codClima.id===500) || (codClima.id===504) || (codClima.id===522) || (codClima.id===531)){
 
         Swal.fire({
-            title: 'En '+ clima.name + ' tené presente estos consejos ante cualquier riesgo eléctrico en la vía pública',
+            title: 'En '+ clima.name + ' tené presente estos consejos ante lluvias intensas',
             text: 'Si comienza a entrar agua en tu casa o establecimiento, cortá la luz accionando la llave térmica o el interruptor general.',
             imageUrl: 'http://openweathermap.org/img/wn/'+codClima.icon+'.png',
             imageWidth: 60,
@@ -84,7 +87,7 @@ function alertaTormentas(codClima,clima) {
     if ((codClima.id===211) || (codClima.id===212) || (codClima.id===221) || (codClima.id===202)){
 
         Swal.fire({
-            title: 'En '+ clima.name + ' tené presente este consejo.',
+            title: 'En '+ clima.name + ' tené presente este consejo ante tormentas electricas.',
             text: 'Si comienza a entrar agua en tu casa o establecimiento, cortá la luz accionando la llave térmica o el interruptor general.',
             imageUrl: 'http://openweathermap.org/img/wn/'+codClima.icon+'.png',
             imageWidth: 60,
@@ -130,14 +133,14 @@ function alertasClimaticas(indice,listado){
 
 
 function imprimirTotal(){
-
+    
     $("#botonResultado").click(()=> { 
-    // $('html,body').animate({scrollTop: $("body").offset().top});
+        
         $("#tablero").slideUp(1000,()=>{$("#tablero").remove()})
         borraElemento("#botonResultado")
         
 
-        $("#total-general").after($(    `<div class="container-fluid">
+        $("#total-general").after($(    `<div class="container-fluid mt-5">
         <div class="row justify-content-center align-items-center">
             <div class="col-md-6 d-block" >
                 <h2 id="totalGeneral" class="consumoTotal py-2 mb-2 text-center">CONSUMO TOTAL MENSUAL  `+ sumaTotal() + ` KWH</h2>
@@ -154,9 +157,10 @@ function imprimirTotal(){
         </div>  
     </div>
         `))
-
+        
         creaGrafico()
         cargaTarifas()
+        
     })
     
 }

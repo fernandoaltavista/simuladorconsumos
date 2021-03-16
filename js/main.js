@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+    
     sumaLocalStorage()                 //Incializa en localStorage la suma anterior , y sino te da la bievenida
     
     cargarDatos()                    //Carga todos los datos desde el archivo listado-json.js y demas datos
