@@ -1,7 +1,7 @@
 {
     "empresas": [{
             "nombre": "Edesur",
-            "icon" : "img/Edesur_Logo.png",
+            "icon" : "/img/Edesur_Logo.png",
             "tarifa": 2.832,
             "cargoFijo": 43.46,
             "impuesto": 0.27,
@@ -9,7 +9,7 @@
         },   
         {
             "nombre": "Edenor",
-            "icon" : "img/edenor-logo.png",
+            "icon" : "/img/edenor-logo.png",
             "tarifa": 2.845,
             "cargoFijo": 41.75,
             "impuesto": 0.27,
@@ -17,7 +17,7 @@
         },  
         {
             "nombre": "Edelap",
-            "icon" :"img/logo-edelap.png",
+            "icon" :"/img/logo-edelap.png",
             "tarifa": 3.208,
             "cargoFijo": 85.75,
             "impuesto": 0.32,
@@ -25,7 +25,7 @@
         },
         {
             "nombre": "Eden",
-            "icon" : "img/eden-logo.png",
+            "icon" : "/img/eden-logo.png",
             "tarifa": 4.239,
             "cargoFijo": 102.5,
             "impuesto": 0.32,
@@ -33,7 +33,7 @@
         },
         {
             "nombre": "Edea",
-            "icon" : "img/logo_edea.png",
+            "icon" : "/img/logo_edea.png",
             "tarifa": 3.56,
             "cargoFijo": 81.2,
             "impuesto": 0.32,
@@ -41,7 +41,7 @@
         },
         {
             "nombre": "Epec",
-            "icon" : "img/epec-logo.png",
+            "icon" : "/img/epec-logo.png",
             "tarifa": 5.356,
             "cargoFijo": 112.68,
             "impuesto": 0.24,
@@ -49,7 +49,7 @@
         },
         {
             "nombre": "Enersa",
-            "icon" : "img/logo-enersa.jpg",
+            "icon" : "/img/logo-enersa.jpg",
             "tarifa": 4.436,
             "cargoFijo": 245.12,
             "impuesto": 0.33,
