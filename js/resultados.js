@@ -9,16 +9,16 @@ function cargarIconosEmpresa(listado){
             }));
             $('#'+element.nombre).css('cursor', 'pointer');
 
-            $('#'+element.nombre).hover(function () {
+            $('#'+element.nombre).hover(()=> {
                    
                     $('#'+element.nombre).addClass('iconosEmpresas');
-                }, function () {
+                },()=> {
                     $('#'+element.nombre).removeClass('iconosEmpresas');
                 
                 }
             );
     });
-     
+
 }
 
 
@@ -29,12 +29,15 @@ let sumaEnPesos = listado[indice].cargoFijo + (listado[indice].tarifa * totalCon
 let impuesto = sumaEnPesos * listado[indice].impuesto
 let sumaTotalPesos = sumaEnPesos + impuesto
 let icon = listado[indice].icon
-const ADVERTENCIA = "https://www.nicepng.com/png/detail/348-3484341_signos-de-interrogacin-signo-de-pregunta-fondo-azul.png"
-$("#iconosEmpresas").after($("<div id='calculo' class='text-center d-block p-3'></div>"));
 
-$("#calculo").append(`<h3 class='d-block py-2 consumoTotal'>IMPORTE MENSUAL ESTIMADO: $`+sumaTotalPesos.toFixed(2)+`<img src=`+ADVERTENCIA+` height="20px" id="signo" class="ml-2"></img></h3>
-                            <img src=`+icon+` height="100px" class="py-2"></img>
-                        `).fadeIn(1000);
+const ADVERTENCIA = "https://www.nicepng.com/png/detail/348-3484341_signos-de-interrogacin-signo-de-pregunta-fondo-azul.png"
+
+$("#totalGeneral").after($("<div id='calculo' class='text-center d-block p-3 border-bottom'></div>"))
+
+$("#calculo").append(   `<h3 class='d-block py-2 consumoTotal'>IMPORTE MENSUAL ESTIMADO: $`+ sumaTotalPesos.toFixed(2)+
+                            `<img src=`+ADVERTENCIA+` height="20px" id="signo" class="ml-2"></img></h3>
+                        <img src=`+icon+` height="120px" class="py-2"></img>
+                        `)
 
 $('#signo').css('cursor', 'pointer');
 tippy("#signo",{content: 'No estan incluidos los impuestos municipales ni alumbrado publico.Valores correspondiente a tarifa T1R'}
@@ -70,40 +73,52 @@ function cargaTarifas() {
 
 function alertaLluvias(codClima,clima) {
 
-    if ((codClima.id===500) || (codClima.id===504) || (codClima.id===522) || (codClima.id===531)){
+const existeLluvia = ((codClima.id===503) || (codClima.id===504) || (codClima.id===522) || (codClima.id===531))
+
+    if (existeLluvia) {
 
         Swal.fire({
             title: 'En '+ clima.name + ' tené presente estos consejos ante lluvias intensas',
-            text: 'Si comienza a entrar agua en tu casa o establecimiento, cortá la luz accionando la llave térmica o el interruptor general.',
+            text:   `Si comienza a entrar agua en tu casa o establecimiento, cortá la luz accionando 
+                    la llave térmica o el interruptor general.`,
             imageUrl: 'http://openweathermap.org/img/wn/'+codClima.icon+'.png',
             imageWidth: 60,
             imageHeight: 60,
+            backdrop: 'rgba(15,92,193,0.4)'
           })
     }
 }
 
 
 function alertaTormentas(codClima,clima) {
-    if ((codClima.id===211) || (codClima.id===212) || (codClima.id===221) || (codClima.id===202)){
 
+const existeTormenta = ((codClima.id===211) || (codClima.id===212) || (codClima.id===221) || (codClima.id===202))
+    if (existeTormenta) {
         Swal.fire({
             title: 'En '+ clima.name + ' tené presente este consejo ante tormentas electricas.',
-            text: 'Si comienza a entrar agua en tu casa o establecimiento, cortá la luz accionando la llave térmica o el interruptor general.',
+            text: `Si comienza a entrar agua en tu casa o establecimiento, cortá la luz accionando
+                    la llave térmica o el interruptor general.`,
             imageUrl: 'http://openweathermap.org/img/wn/'+codClima.icon+'.png',
             imageWidth: 60,
             imageHeight: 60,
+            backdrop: 'rgba(5,8,203,0.6)'
+            
           })
     }
 }
 
 function alertaAltasTemperaturas(codClima,temp,clima) {
-    if (temp.toFixed() > 30){
+
+const existeAltaTemperatura = (temp.toFixed() > 10)
+    if (existeAltaTemperatura) {
         Swal.fire({
             title: `En ${clima.name} hace ${temp.toFixed()}º tené presente este consejo.`,
-            text: 'Regulá los aparatos de aire acondicionado en 24° cuando haga calor. Por cada grado inferior a esa temperatura, el consumo aumenta entre un 5% y 7%.',
+            text:   `Regulá los aparatos de aire acondicionado en 24° cuando haga calor. 
+                    Por cada grado inferior a esa temperatura, el consumo aumenta entre un 5% y 7%.`,
             imageUrl: 'http://openweathermap.org/img/wn/'+codClima.icon+'.png',
             imageWidth: 60,
             imageHeight: 60,
+            backdrop: 'rgba(228,1,1,0.4)'
           })
     }
 }
@@ -132,21 +147,22 @@ function alertasClimaticas(indice,listado){
 }
 
 
+
 function imprimirTotal(){
     
     $("#botonResultado").click(()=> { 
-        
-        $("#tablero").slideUp(1000,()=>{$("#tablero").remove()})
-        borraElemento("#botonResultado")
-        
 
+        $("#tablero").slideUp(1000,()=>{ $("#tablero").remove() })
+        borraElemento("#botonResultado")
+        borraElemento("#total-general > p")
+        scrollInicio()
         $("#total-general").after($(    `<div class="container-fluid mt-5">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-6 d-block" >
-                <h2 id="totalGeneral" class="consumoTotal py-2 mb-2 text-center">CONSUMO TOTAL MENSUAL  `+ sumaTotal() + ` KWH</h2>
-                <label id="importe" class="form-label d-block border-top" >Seleccione la empresa para calcular su factura</label>
+        <div class="row justify-content-center mb-2 align-items-center">
+            <div class="col-md-6 d-block">
+                <label id="importe" class="form-label d-block" >3) Seleccione la empresa para calcular su factura</label> 
+                <h2 id="totalGeneral" class="consumoTotal py-3 mt-3 text-center">CONSUMO TOTAL MENSUAL  `+ sumaTotal() + ` KWH</h2>
             </div> 
-            <div class="col-md-6 border grafico" id="resultado">
+            <div class="col-md-6 grafico" id="resultado">
                 <div id="chart"></div>
                 
             </div> 
@@ -157,10 +173,8 @@ function imprimirTotal(){
         </div>  
     </div>
         `))
-        
         creaGrafico()
         cargaTarifas()
-        
     })
     
 }

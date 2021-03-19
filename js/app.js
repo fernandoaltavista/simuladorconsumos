@@ -6,8 +6,8 @@ function cargaArrayEventos() {
     });
 }
 
-//Eventos Click de cada Modal que agrega un electrodomestico.Obtiene los id desde el arrayID.(con objetos de las direcciones en el DOM)
-function eventos(){
+
+function eventos() {
 
     arrayID.forEach(element => {
        
@@ -50,13 +50,12 @@ function imprimirOpcion(tipo) {
         
         actualizaTotales()                                                     
         
-        creaBotonResultado()                                                    
+        habilitaBotonResultado()                                                    
         
         resetSelect(electroOpcion,horasOpcion,cantidadOpcion)                 
         
         
     }
-  
 }
 
 function creaListadoOpciones(tipo,electro,indice) {
@@ -65,7 +64,7 @@ function creaListadoOpciones(tipo,electro,indice) {
     let idElectroBotonBorrar = (electro +"-"+ indice).replace(/\s+/g, '')
     idElectroBotonBorrar = idElectroBotonBorrar.replace(/[.'']/g,'')
     
-        newElegido(tipo,idElectroElegido,electro,idElectroBotonBorrar,indice)
+        nuevoElegido(tipo,idElectroElegido,electro,idElectroBotonBorrar,indice)
        
         $("#"+idElectroBotonBorrar).click(function (e) { 
 
@@ -110,7 +109,7 @@ let existeListaVacia = arrayElectroElegidos.every(item => item == 0)    //Si hay
 
 
 //Funcion suma total de todos los electrodomesticos elegidos menos los elementos elimiandos (los que estan en 0)
-function sumaTotal(){
+function sumaTotal() {
 
 
     for (let i = 0; i < arrayElectroElegidos.length; i++) { 
@@ -126,7 +125,7 @@ function sumaTotal(){
 
 
 //Funcion que crea el elemento elegido y lo muestra
-function newElegido(tipo,id,nombre,idBoton,indice) {
+function nuevoElegido(tipo,id,nombre,idBoton,indice) {
     $("#"+tipo + "-objeto").append("<div id="+id+"></div>")
     $("#"+id).hide().append('<p class="d-block m-0">'+ nombre +'</p>').fadeIn();  
  
@@ -141,16 +140,15 @@ function newElegido(tipo,id,nombre,idBoton,indice) {
 }  
 
 
-
 function mostrarTotalesPorTipo(id,mensaje) {
     $("#total-"+id).text(mensaje)
 }
 
-//Funcion que va actualizando tablero de acuerdo a si esta en 0 o no
+
 function renderizaTablero() {
     arrayID.forEach(element => {
 
-        if (element.totalTipo !== 0 ){
+        if (element.totalTipo !== 0 ) {
             $(element.idTipo+"-contenedor").removeClass("bg-contenedor");
             $(element.idTipo+"-contenedor").addClass("bg-contenedor-elegido");
             
@@ -161,41 +159,39 @@ function renderizaTablero() {
     });
 }
 
-//Funcion que busca la potencia de un electrodomestico en el array de Listado
+function borrarElegidos(idBorrar,indiceBorrar) {  
+
+    borraElemento("#"+idBorrar)
+    arrayElectroElegidos[indiceBorrar] = 0              //Coloca un 0 en el elemento eliminado
+}
+
 function buscarPotencia(electro) {
 
     let indice = (listadoElectrodomesticos.findIndex(item => (item.nombre === electro)))
     return (listadoElectrodomesticos[indice].consumo)
 }
 
-//Funcion que busca el tipo de un electrodomestico en el array de Listado
+
 function buscarTipo(electro) {
     
     let indice = (listadoElectrodomesticos.findIndex(item => (item.nombre === electro)))
     return (listadoElectrodomesticos[indice].tipo)
 }
 
-//Funcion que habilita el boton resultado
-function creaBotonResultado(){
+
+function habilitaBotonResultado() {
    if (arrayID.some(item => item.totalTipo !== 0)) {
         $("#botonResultado").prop("disabled",false)
     }
 }
 
-//Funcion que borra elementos elegidos y coloca 0 en el lugar que ocupa
-function borrarElegidos(idBorrar,indiceBorrar) {  
-
-    borraElemento("#"+idBorrar)
-    arrayElectroElegidos[indiceBorrar] = 0              //Coloca un 0 en el elemento eliminado
-    
-}
 
 function borraElemento(id) { 
-    $(id).fadeOut(800,()=>{$(id).remove()})
+    $(id).slideUp(800,()=>{$(id).remove()})
 }
 
-//Funcion que inicializa en 0 todos los totales portipo
-function incializa(){
+
+function incializa() {
     arrayID.forEach(element => {
         element.totalTipo = 0 
     });
@@ -203,8 +199,12 @@ function incializa(){
 
 function scrollBoton() {
     $('html,body').animate({
-        scrollTop: $("#botonResultado").offset().top});
+        scrollTop: $("#botonResultado").offset().top })
 }
+function scrollInicio() {
+    $("html, body").animate({ scrollTop: 0 })
+}
+
 function validaOpciones(param1,param2,param3) {
     
     if ( (param1.val() == "seleccione") ) {
@@ -225,15 +225,15 @@ function validaOpciones(param1,param2,param3) {
     return true
 }
 
-//Funcion que resetea las tres opciones
-function resetSelect(param1,param2,param3){
+
+function resetSelect(param1,param2,param3) {
     param1.parent().prop('selectedIndex',0)
     param2.parent().prop('selectedIndex',0)
     param3.parent().prop('selectedIndex',0)
 }
 
 
-//Funcion que controla los eventos de cerrar los Modals para que pueda resetar.
+
 function resetModal(id) {
     $(id).on("hidden.bs.modal", ()=> { 
         $('option').parent().prop('selectedIndex',0)
@@ -249,9 +249,10 @@ function limpiaArrayElectroElegidos(){
     });
 }
 
-//Incializa en localStorage la suma anterior , y sino te da la bievenida.
-function sumaLocalStorage(){
-    $("html, body").animate({ scrollTop: 0 });
+
+function sumaLocalStorage() {
+    scrollInicio()
+    $("#botonResultado").prop("disabled",true) 
     if ( ((localStorage.getItem('total')) == 0) || ((localStorage.getItem('total')) == null)  )  {  //Coloque 0 o null por algun navegador
         localStorage.setItem('total',totalConsumo)
         $.notify("Bienvenido a su primer calculo","success")
