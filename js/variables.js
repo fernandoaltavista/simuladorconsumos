@@ -25,14 +25,14 @@ function Electrodomestico(nombre,consumo,tipo) {
 //Objeto creado con el electrodomestico elegido con los atributos y su operacion
 function ElectroElegido(electrodomestico,consumo,tipo,cantidad,horas){
 
-const diasMes = 30.4
+const DIASMES = 30.4
     this.electrodomestico = electrodomestico
     this.consumo = consumo   //Consumo calculado en Wh
     this.tipo = tipo
     this.cantidad = cantidad
     this.horas = horas
     this.operacion = function() {              
-        return  (((this.consumo * this.horas) / 1000)*this.cantidad)*diasMes  }   //Realiza operacion y trunca para que queden 3 decimales
+        return  (((this.consumo * this.horas) / 1000)*this.cantidad)*DIASMES  }   //Realiza operacion y trunca para que queden 3 decimales
 }
 
 
