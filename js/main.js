@@ -1,20 +1,19 @@
 $(document).ready(function(){
     
-    sumaLocalStorage()                 //Incializa en localStorage la suma anterior , y sino te da la bievenida
+    sumaLocalStorage()                 
     
-    cargarDatos()                    //Carga todos los datos desde el archivo listado-json.js y demas datos
+    cargarDatos()                    
     
-    cargaSelectArtefactos()         //Carga todos los select segun el tipo
+    cargaSelectArtefactos()         
 
-    cargaArrayHorasCantidad()      //Carga los select de cantidad y horas
+    cargaArrayHorasCantidad()      
 
-    cargaArrayEventos()             //Funcion que carga en Array, todos los ID a utilizar para los eventos
+    cargaArrayEventos()             
 
-    eventos()                       //Activa los eventos que realiza las operaciones de consumo
+    eventos()                     
 
 })
 
-    imprimirTotal()                 //Imprime en pantalla el total del consumo mediante un boton
-
+    imprimirTotal()               
 
 
