@@ -1,5 +1,4 @@
 
-//Funcion que carga arrays de numeros ,pasado por parametro
 function cargaArray(arrayIngresado,total) {
 
     for (let i = 0; i < total; i++) {
@@ -9,7 +8,7 @@ function cargaArray(arrayIngresado,total) {
     }
 }
 
-//Funcion que carga Electrodomesticos en objeto y luego cada objeto en un array
+
 function cargaListadoElectrodomesticos(){
     
 electro.artefactos.forEach(element => {
@@ -23,7 +22,7 @@ electro.artefactos.forEach(element => {
 }
 
 
-//Funcion que carga los electros por tipo pasado por parametro en un select
+
 function cargaSelectElectro(id) {
 
         listadoElectrodomesticos.forEach(element => {
@@ -39,7 +38,7 @@ function cargaSelectElectro(id) {
 
 }
 
-//Funcion que ordena un array
+
 function ordenarArray(array){
 
     array.sort(function(a,b){
@@ -55,7 +54,7 @@ function ordenarArray(array){
     })
 }
 
-//Funcion que carga los arrays de Cantidad y Horas en el select por clase
+
 function cargaSelectNumeros(clase,array) {
     array.forEach(element => {
         if (clase == ".horas"){
@@ -67,7 +66,7 @@ function cargaSelectNumeros(clase,array) {
     });
 }
 
-//Funcion que carga solamente el valor 24 en select de Refrigeracion
+
 function cargaSelectHorasRefrigeracion() {  
     $(".horasRefrigeracion").append($('<option>',{text: 24 +" Hs",value :24}));
 }
@@ -93,7 +92,6 @@ function cargarDatos(){
     const cantidadHoras = 24
 
         cargaListadoElectrodomesticos()
-        // cargaArrayEmpresas()
         ordenarArray(listadoElectrodomesticos) 
 
         cargaArray(arrayCantidad,cantidadElectrodomesticos)
