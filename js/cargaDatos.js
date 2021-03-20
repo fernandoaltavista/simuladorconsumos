@@ -12,7 +12,7 @@ function cargaArray(arrayIngresado,total) {
 function cargaListadoElectrodomesticos() {
     $.ajax({
         type: "GET",
-        url: "./artefactos.json",
+        url: "/json/artefactos.json",
         dataType: "json",
     
     })
