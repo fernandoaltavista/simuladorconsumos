@@ -29,7 +29,7 @@ let impuesto = sumaEnPesos * listado[indice].impuesto
 let sumaTotalPesos = sumaEnPesos + impuesto
 let icon = listado[indice].icon
 
-const advertencia = "/icon/round_priority_high_white_18dp.png"
+const advertencia = "icon/round_priority_high_white_18dp.png"
 
 $("#totalGeneral").after($("<div id='calculo' class='text-center d-block p-3 border-bottom'></div>"))
 
