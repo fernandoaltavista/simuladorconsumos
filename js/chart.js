@@ -1,9 +1,7 @@
-//Pasa a mayuscula el array con los tipos ,solamente para mostrarlos en el grafico
 function mayusculaTipos() {
     let mayuscula = tiposLabel.map(item => item.toUpperCase())
     return mayuscula
 }
-
 
 function creaGrafico() {  
 

@@ -1,4 +1,3 @@
-
 function cargarIconosEmpresa(listado) {
     $("#importe").after($(`<div id='iconosEmpresas' class='text-center p-3 border'></div>`))
     listado.forEach(element => {
@@ -50,7 +49,7 @@ function facturacionYAlertas() {
         type: "GET",
         url: "./tarifas.json",
         dataType: "json",
-      
+
     })
     .done((listado)=> {
         cargarIconosEmpresa(listado.empresas)
@@ -103,7 +102,7 @@ const existeTormenta = ((codClima.id===211) || (codClima.id===212) || (codClima.
             imageHeight: 60,
             backdrop: 'rgba(5,8,203,0.6)'
             
-          })
+        })
     }
 }
 
@@ -142,7 +141,7 @@ function alertasClimaticas(indice,listado) {
         })
         .fail(()=> {
             
-            $.notify("Error.El servidor no responde ","error")
+            $.notify("El servidor no responde.Intente mas tarde ","error")
         })
 
 }
