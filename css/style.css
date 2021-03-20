@@ -23,6 +23,12 @@ button {
   outline: none;
   line-height: normal; }
 
+.menu {
+  background-color: #2234ae;
+  background-image: linear-gradient(315deg, #2234ae 0%, #191714 74%);
+  font-family: "Staatliches", cursive;
+  padding: 13px; }
+
 .bg-contenedor {
   border: 1px solid;
   border-color: #575454;
@@ -44,7 +50,7 @@ button {
   font-weight: bold; }
 
 .bg-contenedor-elegido {
-  background-color: #5499C7;
+  background-color: #AED6F1;
   border: 1px solid;
   border-color: #141414;
   border-radius: 20px;
@@ -59,7 +65,7 @@ button {
 
 .bg-opcion {
   font-size: 0.9rem;
-  background-color: #5499C7;
+  background-color: #8ac6ee;
   font-weight: bold;
   color: black;
   display: inline-flex;
@@ -91,9 +97,12 @@ button {
   background-image: url("../icon/round_remove_circle_outline_black_24dp.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #a10505;
   height: 24px;
   width: 24px; }
+
+.botonBorrar:hover {
+  background-color: rgba(218, 10, 10, 0.89);
+  transition: 1s; }
 
 .botonHome {
   align-items: center;
@@ -113,9 +122,6 @@ button {
 
 .bg-gris {
   background-color: rgba(159, 159, 163, 0.315); }
-
-.bg-fondo {
-  background-color: #0c0c44; }
 
 .encabezado {
   font-family: "Open Sans", sans-serif;
@@ -137,10 +143,13 @@ button {
   border: 2px solid black;
   border-radius: 10px; }
 
-.letraTitulo, .menu {
+.letraTitulo {
   font-family: 'Fjalla One', sans-serif; }
 
-.fuenteTitulo, .menu {
+.fuenteMenu, .menu {
+  font-size: 1.4rem; }
+
+.fuenteTitulo {
   font-size: 1rem; }
 
 .fuenteNormal, .encabezado, #importe {
@@ -156,7 +165,9 @@ button {
   .logoElectro {
     height: 40px;
     margin-bottom: 0.8rem; }
-  .fuenteTitulo, .menu {
+  .fuenteMenu, .menu {
+    font-size: 1.2rem; }
+  .fuenteTitulo {
     font-size: .88rem; }
   .fuenteNormal, .encabezado, #importe {
     font-size: 0.8rem; }
