@@ -48,7 +48,7 @@ function facturacionYAlertas() {
 
     $.ajax({
         type: "GET",
-        url: "./json/tarifas.json",
+        url: "../json/tarifas.json",
         dataType: "json",
       
     })
