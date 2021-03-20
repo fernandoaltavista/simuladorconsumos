@@ -29,12 +29,12 @@ let impuesto = sumaEnPesos * listado[indice].impuesto
 let sumaTotalPesos = sumaEnPesos + impuesto
 let icon = listado[indice].icon
 
-const ADVERTENCIA = "/icon/round_priority_high_white_18dp.png"
+const advertencia = "/icon/round_priority_high_white_18dp.png"
 
 $("#totalGeneral").after($("<div id='calculo' class='text-center d-block p-3 border-bottom'></div>"))
 
 $("#calculo").append(   `<h3 class='d-block py-2 consumoTotal'>IMPORTE MENSUAL ESTIMADO: $`+ sumaTotalPesos.toFixed(2) +
-                            `<img src=`+ ADVERTENCIA +` id="signo" class="btn botonGeneral ml-2"></img></h3>
+                            `<img src=`+advertencia+` id="signo" class="btn botonGeneral ml-2"></img></h3>
                         <img src=`+ icon +` height="110px" class="py-2"></img>
                         `)
 
