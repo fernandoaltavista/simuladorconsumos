@@ -10,8 +10,8 @@ function cargaArrayEventos() {
 function eventos() {
 
     arrayID.forEach(element => {
-       
-        $(element.idAgregar).click( (e)=> {         //Activa los eventos de agregar electrodomesticos
+
+        $(element.idAgregar).click( ()=> {         //Activa los eventos de agregar electrodomesticos
             imprimirOpcion(element.idTipo)
             scrollBoton()
         });
@@ -66,7 +66,7 @@ function creaListadoOpciones(tipo,electro,indice) {
     
         nuevoElegido(tipo,idElectroElegido,electro,idElectroBotonBorrar,indice)
        
-        $("#"+idElectroBotonBorrar).click(function (e) { 
+        $("#"+idElectroBotonBorrar).click( ()=> { 
 
             borrarElegidos(idElectroElegido,indice)
             actualizaTotales()                             
@@ -80,11 +80,11 @@ function actualizaTotales() {
 
 incializa()
 
-let existeListaVacia = arrayElectroElegidos.every(item => item == 0)    //Si hay todos 0 (elementos eliminados), devuelve true
+let existeListaVacia = arrayElectroElegidos.every(item => item === 0)    //Si hay todos 0 (elementos eliminados), devuelve true
                                                                         
     if (!existeListaVacia) {
         arrayID.forEach(element1 => {
-            arrayElectroElegidos.forEach(element2 =>{
+            arrayElectroElegidos.forEach(element2 => {
 
                 if ((element1.idTipo) == ("#"+element2.tipo)){
                     element1.totalTipo += (parseInt(element2.operacion()))                    
@@ -96,12 +96,12 @@ let existeListaVacia = arrayElectroElegidos.every(item => item == 0)    //Si hay
             
         })
 
-    } else {                                                            //Incializa todo
+    } else {                                                            
         arrayID.forEach(element => {
             element.totalTipo = 0
             mostrarTotalesPorTipo((element.idTipo).slice(1),(0 + " KWH"))
-            $("#botonResultado").prop("disabled",true)  //Desabilita boton resultado cuando esta todo en 0
-            arrayElectroElegidos= [ ]           //Inicializa el array de Electrodomesticos elegidos
+            $("#botonResultado").prop("disabled",true)  
+            arrayElectroElegidos= [ ]           
         });
     }
     renderizaTablero()
@@ -111,15 +111,13 @@ let existeListaVacia = arrayElectroElegidos.every(item => item == 0)    //Si hay
 //Funcion suma total de todos los electrodomesticos elegidos menos los elementos elimiandos (los que estan en 0)
 function sumaTotal() {
 
-
     for (let i = 0; i < arrayElectroElegidos.length; i++) { 
-        if (arrayElectroElegidos[i] !== 0 ){                    //Elementos eliminados
+        if (arrayElectroElegidos[i] !== 0 ){                    
         totalConsumo = parseInt(totalConsumo) + parseInt(arrayElectroElegidos[i].operacion())
         }
     }
 
-    localStorage.setItem('total',totalConsumo)       //Guarda en localStorage consumo total
-    
+    localStorage.setItem('total',totalConsumo)       
     return totalConsumo
 }
 
@@ -127,15 +125,16 @@ function sumaTotal() {
 //Funcion que crea el elemento elegido y lo muestra
 function nuevoElegido(tipo,id,nombre,idBoton,indice) {
     $("#"+tipo + "-objeto").append("<div id="+id+"></div>")
-    $("#"+id).hide().append('<p class="d-block m-0">'+ nombre +'</p>').fadeIn();  
+    $("#"+id).hide().append('<p class="d-block m-1">'+ nombre +'</p>').fadeIn();  
  
     $("#"+id).addClass("p-2 m-2 bg-opcion")
     $("#"+id).append('<input type= "button" class="ml-2 btn btn-danger d-block botonBorrar" id="'+ idBoton+'" value=""></input>') 
     $('#'+id +'> p').css('cursor', 'pointer')
     tippy('#'+id +'> p' ,{
-        content :   `Consumo: ${arrayElectroElegidos[indice].consumo} watts,
+        content :   `Consumo: ${arrayElectroElegidos[indice].consumo} Wh,
                     Cantidad: ${arrayElectroElegidos[indice].cantidad} ,
                     Uso Diario: ${arrayElectroElegidos[indice].horas} horas`,  
+        animation: 'scale',
     })
 }  
 
@@ -206,19 +205,23 @@ function scrollInicio() {
 }
 
 function validaOpciones(param1,param2,param3) {
-    
-    if ( (param1.val() == "seleccione") ) {
+
+const existeElectro = (param1.val() === "seleccione") 
+const existeCantidad = (param2.val() === "seleccione") 
+const existeHoras = (param3.val() === "seleccione") 
+
+    if (existeElectro) {
         $(param1.parent()).notify("No ingreso el electrodomestico",{autoHideDelay: 2500,hideDuration:500})
         return false
     }
     
-    if ( (param2.val() == "seleccione") ){
+    if (existeCantidad) {
         $(param2.parent()).notify("No ingreso cantidad",{autoHideDelay: 2500,hideDuration:500})
         return false
     }
 
 
-    if ( (param3.val() == "seleccione") ){
+    if (existeHoras) {
         $(param3.parent()).notify("No ingreso horas",{autoHideDelay: 2500,hideDuration:500})
         return false
     }
@@ -253,7 +256,7 @@ function limpiaArrayElectroElegidos(){
 function sumaLocalStorage() {
     scrollInicio()
     $("#botonResultado").prop("disabled",true) 
-    if ( ((localStorage.getItem('total')) == 0) || ((localStorage.getItem('total')) == null)  )  {  //Coloque 0 o null por algun navegador
+    if ( ((localStorage.getItem('total')) === 0) || ((localStorage.getItem('total')) === null)  )  {  //Coloque 0 o null por algun navegador
         localStorage.setItem('total',totalConsumo)
         $.notify("Bienvenido a su primer calculo","success")
         

@@ -1,18 +1,17 @@
-let listadoElectrodomesticos = [     ]  
-let arrayCantidad=[     ]
-let arrayHoras = [      ]
-
+let listadoElectrodomesticos = [    ]  
+let arrayCantidad=[ ]
+let arrayHoras = [  ]
 
 let tipos = ["iluminacion","climatizacion","refrigeracion","cocina","agua","linea","electronica","cuidado"]
 let tiposLabel = ["iluminacion","climatizacion","refrigeracion","cocina","agua","linea blanca","electronica","cuidado personal"]
 
 let totalConsumo = 0 
 
-let arrayElectroElegidos = [    ] 
+let arrayElectroElegidos = [  ] 
 
 let arrayID = [ ]  
 
-let arrayTotales = [    ]       
+let totalesTipo = [    ]       
 
 
 function Electrodomestico(nombre,consumo,tipo) {       
@@ -32,7 +31,6 @@ const diasMes = 30.4
     this.operacion = function() {              
         return  (((this.consumo * this.horas) / 1000)*this.cantidad)* diasMes  } 
 }
-
 
 
 function IdTipos(idTipo,totalTipo,idModal,idAgregar,idTotal){

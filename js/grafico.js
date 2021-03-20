@@ -1,22 +1,16 @@
-//Crea un array con los totales de cada tipo
-function creaArrayTotales(){
-    arrayID.forEach(element => {arrayTotales.push(parseInt(element.totalTipo))})
-}
-
 //Pasa a mayuscula el array con los tipos ,solamente para mostrarlos en el grafico
 function mayusculaTipos() {
     let mayuscula = tiposLabel.map(item => item.toUpperCase())
     return mayuscula
 }
 
-//Funcion que crea el grafico con ChartJs, con su nodo
+
 function creaGrafico() {  
 
-
-creaArrayTotales()
+arrayID.forEach(element => {totalesTipo.push(parseInt(element.totalTipo))})
 
 var options = {
-    series: arrayTotales,
+    series: totalesTipo,
     chart: {
     width: '100%',
     type: 'pie',

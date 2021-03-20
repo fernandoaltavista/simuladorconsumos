@@ -9,31 +9,40 @@ function cargaArray(arrayIngresado,total) {
 }
 
 
-function cargaListadoElectrodomesticos(){
+function cargaListadoElectrodomesticos() {
+    $.ajax({
+        type: "GET",
+        url: "/artefactos.json",
+        dataType: "json",
     
-electro.artefactos.forEach(element => {
-    let nombreElectro = (element.electro)
-    let consumoElectro = (element.consumo)
-    let tipoElectro = (element.tipo)
+    })
+    .done((listado)=> {
+        
+        listado.artefactos.forEach(element => {
+            let nombreElectro = (element.electro)
+            let consumoElectro = (element.consumo)
+            let tipoElectro = (element.tipo)
+            listadoElectrodomesticos.push(new Electrodomestico(nombreElectro,consumoElectro,tipoElectro))
+            })
+            ordenarArray(listadoElectrodomesticos)
+            cargaSelectArtefactos()
+    })    
+    .fail(()=> {
+        $.notify("Error.El servidor no responde ","error")
+    })
 
-    listadoElectrodomesticos.push(new Electrodomestico(nombreElectro,consumoElectro,tipoElectro))
-});
 
 }
 
 
-
 function cargaSelectElectro(id) {
-
         listadoElectrodomesticos.forEach(element => {
+            
             if (element.tipo == id){           //Le saca el numeral(#) para comparalo con tipo de Objeto
                 $("#"+id).append($('<option>', {
-
-                text: element.nombre
-                }))
-
+                    text: element.nombre
+                    }))
         }
-
     });
 
 }
@@ -72,7 +81,7 @@ function cargaSelectHorasRefrigeracion() {
 }
 
 function cargaArrayHorasCantidad() {
-    
+
     cargaSelectNumeros(".cantidad",arrayCantidad)
     cargaSelectNumeros(".horas",arrayHoras)
     cargaSelectHorasRefrigeracion()
@@ -86,16 +95,15 @@ function cargaSelectArtefactos() {
 }
 
 
-//Funcion general que carga todos los arrays a utilizar
-function cargarDatos(){
+
+function cargarDatos() {
     const cantidadElectrodomesticos = 15
     const cantidadHoras = 24
 
         cargaListadoElectrodomesticos()
-        ordenarArray(listadoElectrodomesticos) 
-
         cargaArray(arrayCantidad,cantidadElectrodomesticos)
         cargaArray(arrayHoras,cantidadHoras)
+        cargaArrayHorasCantidad()   
 
 }
 
