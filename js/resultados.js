@@ -1,5 +1,5 @@
 
-function cargarIconosEmpresa(listado){
+function cargarIconosEmpresa(listado) {
     $("#importe").after($(`<div id='iconosEmpresas' class='text-center p-3 border'></div>`))
     listado.forEach(element => {
         $("#iconosEmpresas").append($('<img>', {
@@ -10,7 +10,7 @@ function cargarIconosEmpresa(listado){
             $('#'+element.nombre).css('cursor', 'pointer');
 
             $('#'+element.nombre).hover(()=> {
-                   
+
                     $('#'+element.nombre).addClass('iconosEmpresas');
                 },()=> {
                     $('#'+element.nombre).removeClass('iconosEmpresas');
@@ -22,7 +22,6 @@ function cargarIconosEmpresa(listado){
 }
 
 
-
 function calculoEnPesos(indice,listado) {
 
 let sumaEnPesos = listado[indice].cargoFijo + (listado[indice].tarifa * totalConsumo)
@@ -30,21 +29,22 @@ let impuesto = sumaEnPesos * listado[indice].impuesto
 let sumaTotalPesos = sumaEnPesos + impuesto
 let icon = listado[indice].icon
 
-const ADVERTENCIA = "https://www.nicepng.com/png/detail/348-3484341_signos-de-interrogacin-signo-de-pregunta-fondo-azul.png"
+const ADVERTENCIA = "../icon/round_priority_high_white_18dp.png"
 
 $("#totalGeneral").after($("<div id='calculo' class='text-center d-block p-3 border-bottom'></div>"))
 
-$("#calculo").append(   `<h3 class='d-block py-2 consumoTotal'>IMPORTE MENSUAL ESTIMADO: $`+ sumaTotalPesos.toFixed(2)+
-                            `<img src=`+ADVERTENCIA+` height="20px" id="signo" class="ml-2"></img></h3>
-                        <img src=`+icon+` height="120px" class="py-2"></img>
+$("#calculo").append(   `<h3 class='d-block py-2 consumoTotal'>IMPORTE MENSUAL ESTIMADO: $`+ sumaTotalPesos.toFixed(2) +
+                            `<img src=`+ ADVERTENCIA +` id="signo" class="btn botonGeneral ml-2"></img></h3>
+                        <img src=`+ icon +` height="110px" class="py-2"></img>
                         `)
 
 $('#signo').css('cursor', 'pointer');
-tippy("#signo",{content: 'No estan incluidos los impuestos municipales ni alumbrado publico.Valores correspondiente a tarifa T1R'}
+tippy("#signo",{content: 'No estan incluidos los impuestos municipales ni alumbrado publico. Valores correspondiente a tarifa T1R',
+                animation: 'scale',}
 )}
 
 
-function cargaTarifas() {
+function facturacionYAlertas() {
 
     $.ajax({
         type: "GET",
@@ -98,7 +98,7 @@ const existeTormenta = ((codClima.id===211) || (codClima.id===212) || (codClima.
             title: 'En '+ clima.name + ' tené presente este consejo ante tormentas electricas.',
             text: `Si comienza a entrar agua en tu casa o establecimiento, cortá la luz accionando
                     la llave térmica o el interruptor general.`,
-            imageUrl: 'http://openweathermap.org/img/wn/'+codClima.icon+'.png',
+            imageUrl: 'http://openweathermap.org/img/wn/'+ codClima.icon +'.png',
             imageWidth: 60,
             imageHeight: 60,
             backdrop: 'rgba(5,8,203,0.6)'
@@ -108,8 +108,9 @@ const existeTormenta = ((codClima.id===211) || (codClima.id===212) || (codClima.
 }
 
 function alertaAltasTemperaturas(codClima,temp,clima) {
+const altaTemperatura = 32
+const existeAltaTemperatura = (temp.toFixed() > altaTemperatura)
 
-const existeAltaTemperatura = (temp.toFixed() > 10)
     if (existeAltaTemperatura) {
         Swal.fire({
             title: `En ${clima.name} hace ${temp.toFixed()}º tené presente este consejo.`,
@@ -123,12 +124,12 @@ const existeAltaTemperatura = (temp.toFixed() > 10)
     }
 }
 
-function alertasClimaticas(indice,listado){
+function alertasClimaticas(indice,listado) {
     const id = listado[indice].idCiudad
     const key = "de881c07d95369b3e22b33fe91e740db"
         $.ajax({
             type: "GET",
-            url: "https://api.openweathermap.org/data/2.5/weather?id="+id+"&appid="+key+"&units=metric&lang=es",
+            url: "https://api.openweathermap.org/data/2.5/weather?id="+ id +"&appid="+ key +"&units=metric&lang=es",
             dataType: "json",
         
         })
@@ -146,9 +147,7 @@ function alertasClimaticas(indice,listado){
 
 }
 
-
-
-function imprimirTotal(){
+function imprimirTotal() {
     
     $("#botonResultado").click(()=> { 
 
@@ -168,13 +167,13 @@ function imprimirTotal(){
             </div> 
             
             <div class="col-12 py-1"  style="bottom:0 right:0;" >
-                <input type="button" id="reiniciar" class= "btn btn-primary botonHome" value="" onclick="location.reload()"></input>
+                <input type="button" id="reiniciar" class= "btn material-icons-round botonHome" value="" onclick="location.reload()"></input>
             </div> 
         </div>  
     </div>
         `))
         creaGrafico()
-        cargaTarifas()
+        facturacionYAlertas()
     })
     
 }

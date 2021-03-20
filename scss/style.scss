@@ -1,4 +1,4 @@
-$Fuente:  'Fira Sans', sans-serif;
+$Fuente:  'Open Sans', sans-serif;
 $FuenteTitulo : 'Fjalla One', sans-serif;
 
 body{
@@ -53,7 +53,7 @@ button{
 
 .tipos__titulo{
     font-family: $Fuente;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 
@@ -121,18 +121,18 @@ button{
 
 .botonBorrar{
     align-items: center;
-    background-image: url('../icon/001-eliminar.png');
+    background-image: url('../icon/round_remove_circle_outline_black_24dp.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-color: rgb(184, 3, 3);
-    height: 25px;
-    width: 25px;
+    background-color: rgb(161, 5, 5);
+    height: 24px;
+    width: 24px;
     
 }
 
 .botonHome{
     align-items: center;
-    background-image: url('../icon/boton-home.png');
+    background-image: url('../icon/round_restart_alt_white_24dp.png');
     background-position: center;
     background-repeat: no-repeat;
     background-color: rgb(12, 12, 68);
@@ -141,7 +141,9 @@ button{
     width: 40px;
 
 }
-
+.botonHome:hover{
+    @extend .botonGeneral:hover
+}
 .iconosEmpresas{
     box-shadow: -4px 3px 7px 3px rgba(21,21,21,0.23);
     border-radius: 10px;
@@ -168,6 +170,10 @@ button{
     font-family: $Fuente;
     font-weight: bold;
     @extend .fuenteNormal
+}
+#signo{
+    height: 35px;
+    width: 35px;
 }
 .consumoTotal{
     color: rgb(12, 12, 68);
