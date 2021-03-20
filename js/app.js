@@ -1,4 +1,3 @@
-//Funcion que carga en Array, todos los ID a utilizar para los eventos. Por ahora solo el de agregar y total
 function cargaArrayEventos() {
 
     tipos.forEach(element => {
@@ -11,12 +10,12 @@ function eventos() {
 
     arrayID.forEach(element => {
 
-        $(element.idAgregar).click( ()=> {         //Activa los eventos de agregar electrodomesticos
+        $(element.idAgregar).click( ()=> {         
             imprimirOpcion(element.idTipo)
             scrollBoton()
         });
 
-        resetModal(element.idModal)                 //Resetea selects si clickea boton de Cerrar del Modal
+        resetModal(element.idModal)                 
         
     })
 
@@ -75,7 +74,6 @@ function creaListadoOpciones(tipo,electro,indice) {
         
 }
 
-//Funcion que actualiza todo el array de electrdomesticos elegidos (AB)
 function actualizaTotales() {
 
 incializa()
@@ -111,14 +109,11 @@ let existeListaVacia = arrayElectroElegidos.every(item => item === 0)    //Si ha
 //Funcion suma total de todos los electrodomesticos elegidos menos los elementos elimiandos (los que estan en 0)
 function sumaTotal() {
 
-    for (let i = 0; i < arrayElectroElegidos.length; i++) { 
-        if (arrayElectroElegidos[i] !== 0 ){                    
-        totalConsumo = parseInt(totalConsumo) + parseInt(arrayElectroElegidos[i].operacion())
-        }
-    }
+    arrayElectroElegidos.map(item => { if (item !== 0) { totalConsumo += item.operacion() } })
 
-    localStorage.setItem('total',totalConsumo)       
-    return totalConsumo
+    localStorage.setItem('total',parseInt(totalConsumo))   
+
+    return parseInt(totalConsumo)
 }
 
 
@@ -128,7 +123,7 @@ function nuevoElegido(tipo,id,nombre,idBoton,indice) {
     $("#"+id).hide().append('<p class="d-block m-1">'+ nombre +'</p>').fadeIn();  
  
     $("#"+id).addClass("p-2 m-2 bg-opcion")
-    $("#"+id).append('<input type= "button" class="ml-2 btn btn-danger d-block botonBorrar" id="'+ idBoton+'" value=""></input>') 
+    $("#"+id).append('<input type= "button" class="ml-2 btn d-block botonBorrar" id="'+ idBoton+'" value=""></input>') 
     $('#'+id +'> p').css('cursor', 'pointer')
     tippy('#'+id +'> p' ,{
         content :   `Consumo: ${arrayElectroElegidos[indice].consumo} Wh,
@@ -241,15 +236,6 @@ function resetModal(id) {
     $(id).on("hidden.bs.modal", ()=> { 
         $('option').parent().prop('selectedIndex',0)
     })
-}
-
-//Funcion que limpia el array para antes de sumar todo.
-function limpiaArrayElectroElegidos(){
-    arrayElectroElegidos.forEach(element => {
-        if (element === 0){
-            arrayElectroElegidos.splice(element.indexOf(),1)
-        }
-    });
 }
 
 
