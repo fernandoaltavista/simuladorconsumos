@@ -29,12 +29,14 @@ let sumaTotalPesos = sumaEnPesos + impuesto
 let icon = listado[indice].icon
 
 const advertencia = "icon/round_priority_high_white_18dp.png"
+const gifAnimado = "img/foco-gif.gif"
 
 $("#totalGeneral").after($("<div id='calculo' class='text-center d-block p-3 border-bottom'></div>"))
 
 $("#calculo").append(   `<h3 class='d-block py-2 consumoTotal'>IMPORTE MENSUAL ESTIMADO: $`+ sumaTotalPesos.toFixed(2) +
                             `<img src=`+advertencia+` id="signo" class="btn botonGeneral ml-2"></img></h3>
                         <img src=`+ icon +` height="110px" class="py-2"></img>
+                        <img src=`+ gifAnimado +` height="120px" class="py-2"></img>
                         `)
 
 $('#signo').css('cursor', 'pointer');
@@ -43,7 +45,7 @@ tippy("#signo",{content: 'No estan incluidos los impuestos municipales ni alumbr
 )}
 
 
-function facturacionYAlertas() {
+function calculoYAlertas() {
 
     $.ajax({
         type: "GET",
@@ -80,7 +82,7 @@ const existeLluvia = ((codClima.id===503) || (codClima.id===504) || (codClima.id
             title: 'En '+ clima.name + ' tené presente estos consejos ante lluvias intensas',
             text:   `Si comienza a entrar agua en tu casa o establecimiento, cortá la luz accionando 
                     la llave térmica o el interruptor general.`,
-            imageUrl: 'http://openweathermap.org/img/wn/'+codClima.icon+'.png',
+            imageUrl: 'http://openweathermap.org/img/wn/'+ codClima.icon+ '.png',
             imageWidth: 60,
             imageHeight: 60,
             backdrop: 'rgba(15,92,193,0.4)'
@@ -172,7 +174,7 @@ function imprimirTotal() {
     </div>
         `))
         creaGrafico()
-        facturacionYAlertas()
+        calculoYAlertas()
     })
     
 }
