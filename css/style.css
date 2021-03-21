@@ -23,6 +23,11 @@ button {
   outline: none;
   line-height: normal; }
 
+footer {
+  background-color: #2234ae;
+  background-image: linear-gradient(315deg, #2234ae 0%, #191714 74%);
+  padding: 3px; }
+
 .menu {
   background-color: #2234ae;
   background-image: linear-gradient(315deg, #2234ae 0%, #191714 74%);
@@ -119,9 +124,6 @@ button {
   border-radius: 10px;
   transform: scale(1.1);
   transition: 1.5s; }
-
-.bg-gris {
-  background-color: rgba(159, 159, 163, 0.315); }
 
 .encabezado {
   font-family: "Open Sans", sans-serif;
