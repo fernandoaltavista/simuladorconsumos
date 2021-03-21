@@ -5,7 +5,7 @@ function mayusculaTipos() {
 
 function creaGrafico() {  
 
-arrayID.forEach(element => {totalesTipo.push(parseInt(element.totalTipo))})
+arrayID.forEach(element => { totalesTipo.push(parseInt(element.totalTipo)) })
 
 var options = {
     series: totalesTipo,

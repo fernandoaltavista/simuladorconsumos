@@ -1,17 +1,13 @@
-let listadoElectrodomesticos = [    ]  
-let arrayCantidad=[ ]
-let arrayHoras = [  ]
+let totalConsumo = 0 
 
 let tipos = ["iluminacion","climatizacion","refrigeracion","cocina","agua","linea","electronica","cuidado"]
 let tiposLabel = ["iluminacion","climatizacion","refrigeracion","cocina","agua","linea blanca","electronica","cuidado personal"]
-
-let totalConsumo = 0 
-
-let arrayElectroElegidos = [  ] 
-
+let listadoElectrodomesticos = [  ]  
+let arrayCantidad=[ ]
+let arrayHoras = [  ]
+let arrayElectroElegidos = [ ] 
 let arrayID = [ ]  
-
-let totalesTipo = [    ]       
+let totalesTipo = [  ]   
 
 
 function Electrodomestico(nombre,consumo,tipo) {       

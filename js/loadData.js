@@ -38,7 +38,7 @@ function cargaListadoElectrodomesticos() {
 function cargaSelectElectro(id) {
         listadoElectrodomesticos.forEach(element => {
             
-            if (element.tipo == id){           //Le saca el numeral(#) para comparalo con tipo de Objeto
+            if (element.tipo === id) {     
                 $("#"+id).append($('<option>', {
                     text: element.nombre
                     }))
@@ -66,7 +66,7 @@ function ordenarArray(array){
 
 function cargaSelectNumeros(clase,array) {
     array.forEach(element => {
-        if (clase == ".horas"){
+        if (clase === ".horas"){
             $(clase).append($('<option>',{text: element+" Hs.",value:element}));
         } else{
             $(clase).append($('<option>',{text: element}));
@@ -87,11 +87,8 @@ function cargaArrayHorasCantidad() {
     cargaSelectHorasRefrigeracion()
 }
 
-
 function cargaSelectArtefactos() {
-    tipos.forEach(element => {
-        cargaSelectElectro(element)
-    });
+    tipos.forEach(element => { cargaSelectElectro(element) });
 }
 
 

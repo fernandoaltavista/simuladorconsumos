@@ -5,7 +5,6 @@ function cargaArrayEventos() {
     });
 }
 
-
 function eventos() {
 
     arrayID.forEach(element => {
@@ -31,20 +30,15 @@ function imprimirOpcion(tipo) {
     if (validaOpciones(electroOpcion,cantidadOpcion,horasOpcion)) {     
 
         let electroElegido = electroOpcion.text()
-
         let consumo = buscarPotencia(electroElegido)
-
         let tipoElegido = buscarTipo(electroElegido)
-
         let cantidadElegida = cantidadOpcion.text()
-
         let horasElegida = horasOpcion.val()
     
         let opcionElegida = new ElectroElegido(electroElegido,consumo,tipoElegido,cantidadElegida,horasElegida)
 
         arrayElectroElegidos.push(opcionElegida)
 
-        
         creaListadoOpciones(tipo.slice(1),opcionElegida.electrodomestico,arrayElectroElegidos.length - 1) 
         
         actualizaTotales()                                                     
@@ -64,7 +58,6 @@ function creaListadoOpciones(tipo,electro,indice) {
     idElectroBotonBorrar = idElectroBotonBorrar.replace(/[.'']/g,'')
     
         nuevoElegido(tipo,idElectroElegido,electro,idElectroBotonBorrar,indice)
-       
         $("#"+idElectroBotonBorrar).click( ()=> { 
 
             borrarElegidos(idElectroElegido,indice)
@@ -119,25 +112,25 @@ function sumaTotal() {
 
 //Funcion que crea el elemento elegido y lo muestra
 function nuevoElegido(tipo,id,nombre,idBoton,indice) {
-    $("#"+tipo + "-objeto").append("<div id="+id+"></div>")
-    $("#"+id).hide().append('<p class="d-block m-1">'+ nombre +'</p>').fadeIn();  
+
+const bloqueTipoElegido = ("#"+ tipo + "-bloque")    
+const elegido = ("#"+ id)
+const textoElegido = ('#'+ id +'> p')
+
+    $(bloqueTipoElegido).append("<div id="+ id +"></div>")
+    $(elegido).hide().append('<p class="d-block m-1">'+ nombre +'</p>').fadeIn();  
  
-    $("#"+id).addClass("p-2 m-2 bg-opcion")
-    $("#"+id).append('<input type= "button" class="ml-2 btn d-block botonBorrar" id="'+ idBoton+'" value=""></input>') 
-    $('#'+id +'> p').css('cursor', 'pointer')
-    tippy('#'+id +'> p' ,{
+    $(elegido).addClass("p-2 m-2 bg-opcion")
+    $(elegido).append('<input type= "button" class="ml-2 btn d-block botonBorrar" id="'+ idBoton +'" value=""></input>') 
+    $(textoElegido).css('cursor', 'pointer')
+
+    tippy(textoElegido ,{
         content :   `Consumo: ${arrayElectroElegidos[indice].consumo} Wh,
                     Cantidad: ${arrayElectroElegidos[indice].cantidad} ,
                     Uso Diario: ${arrayElectroElegidos[indice].horas} horas`,  
         animation: 'scale',
     })
 }  
-
-
-function mostrarTotalesPorTipo(id,mensaje) {
-    $("#total-"+id).text(mensaje)
-}
-
 
 function renderizaTablero() {
     arrayID.forEach(element => {
@@ -153,9 +146,14 @@ function renderizaTablero() {
     });
 }
 
+function mostrarTotalesPorTipo(id,mensaje) {
+    $("#total-"+id).text(mensaje)
+}
+
+
 function borrarElegidos(idBorrar,indiceBorrar) {  
 
-    borraElemento("#"+idBorrar)
+    $("#"+idBorrar).fadeOut(1000,()=>{ $("#"+idBorrar).remove() })
     arrayElectroElegidos[indiceBorrar] = 0              //Coloca un 0 en el elemento eliminado
 }
 
@@ -174,16 +172,14 @@ function buscarTipo(electro) {
 
 
 function habilitaBotonResultado() {
-   if (arrayID.some(item => item.totalTipo !== 0)) {
+    if (arrayID.some(item => item.totalTipo !== 0)) {
         $("#botonResultado").prop("disabled",false)
     }
 }
 
-
 function borraElemento(id) { 
     $(id).slideUp(800,()=>{$(id).remove()})
 }
-
 
 function incializa() {
     arrayID.forEach(element => {
