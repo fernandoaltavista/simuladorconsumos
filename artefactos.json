@@ -117,7 +117,7 @@
             },
             {
                 "electro": "Calefon electrico",
-                "consumo":18,
+                "consumo":1200,
                 "tipo": "agua"
             },
             {
@@ -187,22 +187,22 @@
             },
             {
                 "electro": "Pc con monitor de 22'",
-                "consumo":18,
+                "consumo":222,
                 "tipo": "electronica"
             },
             {
                 "electro": "Impresora multifuncion",
-                "consumo":18,
+                "consumo":60,
                 "tipo": "electronica"
             },
             {
                 "electro": "Consola de Videojuegos",
-                "consumo":18,
+                "consumo":120,
                 "tipo": "electronica"
             },
             {
                 "electro": "Decodificador Digital",
-                "consumo":18,
+                "consumo":36,
                 "tipo": "electronica"
             },
             {
@@ -217,7 +217,7 @@
             },
             {
                 "electro": "Depiladora electrica",
-                "consumo":18,
+                "consumo":10,
                 "tipo": "cuidado"
             },
             {
@@ -227,7 +227,7 @@
             },
             {
                 "electro": "Nebulizador",
-                "consumo":18,
+                "consumo":180,
                 "tipo": "cuidado"
             }
     ]
