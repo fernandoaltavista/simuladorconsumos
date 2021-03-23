@@ -2,27 +2,24 @@
 
 _Este proyecto consiste en un simulador de consumos electricos. Se encuentran los artefactos agrupados por el tipo al que pertenecen._
 
-_Tiene la posibilidad de calcular la factura estimada por ese consumo , de acuerdo a la empresa distribuidora de 
-energia que escogas.(valido para Argentina con tarifas al 03/2021)._
 
 ## Comenzando 🚀
 
 _Tiene la posibilidad de calcular la factura estimada por ese consumo , de acuerdo a la empresa distribuidora de 
 energia que escogas.(valido para Argentina con tarifas al 03/2021)._
 
+_Ademas contiene consejos ante las inclemencias climaticas dependiendo de la empresa que se utilice al calcular.(La ciudad corresponde dependiendo donde esta radicada la empresa)_
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
-* Maquetado con HTML5, CSS y Boostrap
-* Javascript
+* Maquetado con HTML5 ,SCSS, CSS.
+* Framework Bootstrap
+* Javascript(Nativo)
 * Librerias JS (Jquery,ApexCharts,Tippy,Notify,SwweetAlert2)
+* API (Openweathermap)
 
 
 ## Autor ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Fernando Altavista** - *Proyecto Completo* 
+* **Fernando Altavista** - *Proyecto Completo* -  [Fernando Altavista](https://www.linkedin.com/in/fernando-andres-altavista-614453201)
 
