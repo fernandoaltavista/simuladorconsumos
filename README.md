@@ -21,5 +21,5 @@ _Ademas contiene consejos ante las inclemencias climaticas dependiendo de la emp
 
 ## Autor ✒️
 
-* **Fernando Altavista** - *Proyecto Completo* -  [Fernando Altavista](https://www.linkedin.com/in/fernando-andres-altavista-614453201)
+* **Fernando Altavista** - *Proyecto Completo* - Linkedin : [Fernando Altavista](https://www.linkedin.com/in/fernando-andres-altavista-614453201)
 
