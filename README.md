@@ -1,6 +1,7 @@
 # Simulador de Consumos Electricos
 
 _Este proyecto consiste en un simulador de consumos electricos. Se encuentran los artefactos agrupados por el tipo al que pertenecen._
+_Se cargan los electrodomesticos,la cantidad y el uso diario, para luego recibir un estimado del consumo mensual.
 
 
 ## Comenzando 🚀
