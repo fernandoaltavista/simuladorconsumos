@@ -14,7 +14,7 @@ _Ademas contiene consejos ante las inclemencias climaticas dependiendo de la emp
 ## Construido con 🛠️
 
 * Maquetado con HTML5 ,SCSS, CSS.
-* Framework Bootstrap
+* Framework Bootstrap (Responsive)
 * Javascript(Nativo)
 * Librerias JS (Jquery,ApexCharts,Tippy,Notify,SwweetAlert2)
 * API (Openweathermap)
